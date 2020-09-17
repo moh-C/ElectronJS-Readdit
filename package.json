@@ -1,0 +1,26 @@
+{
+  "name": "electronjs-readdit",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "dependencies": {
+    "electron": "^10.1.2",
+    "electron-window-state": "^5.0.3",
+    "nodemon": "^2.0.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon --exec electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/moh-C/ElectronJS-Readdit.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/moh-C/ElectronJS-Readdit/issues"
+  },
+  "homepage": "https://github.com/moh-C/ElectronJS-Readdit#readme"
+}
