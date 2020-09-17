@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="script-src 'self' 'unsafe-inline'"
+    />
+    <title>Readdit</title>
+    <link rel="stylesheet" href="main.css" />
+  </head>
+  <body>
+    <header>
+      <button>+</button>
+      <input type="text" id="search-item" />
+    </header>
+    <main>
+      <div class="no-item">No item</div>
+    </main>
+    <div id="new-item-parent">
+      <input type="text" id="add-new-item" />
+      <button id="add-item">Add item</button>
+      <button id="cancel-modal">Cancel</button>
+    </div>
+
+    <script>
+      // You can also require other files to run in this process
+      require("./main.js");
+    </script>
+  </body>
+</html>
