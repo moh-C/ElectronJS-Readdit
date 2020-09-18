@@ -1,26 +1,47 @@
 // This file is required by the index.html file and will
 // be executed in the renderer process for that window.
 
+const { ipcRenderer } = require("electron");
+
 // All of the Node.js APIs are available in this process.
 
 let showModal = document.getElementById("show-modal"),
   closeModal = document.getElementById("close-modal"),
-  modal = document.getElementById("modal");
+  modal = document.getElementById("modal"),
+  addItem = document.getElementById("add-item"),
+  url = document.getElementById("url");
 
-let showModalCallback = (e) => {
+let showModalHandler = (e) => {
   modal.style.transform = "translateX(0)";
   modal.style.zIndex = 1;
   modal.style.opacity = 1;
+  url.focus();
 };
 
-let hideModalCallback = (e) => {
+let hideModalHandler = (e) => {
   modal.style.transform = "translateX(-100%)";
   modal.style.zIndex = -1;
   modal.style.opacity = 0;
 };
 
-showModal.addEventListener("click", showModalCallback);
-closeModal.addEventListener("click", hideModalCallback);
+let addItemFiller = (e) => {
+  url.value = "";
+  hideModalHandler();
+  console.log(e);
+};
+
+let addItemHandler = (e) => {
+  ipcRenderer.invoke("add-item", url.value).then(addItemFiller);
+};
+
+let urlEnterHandler = (e) => {
+  if (e.key == "Enter") addItem.click();
+};
+
+showModal.addEventListener("click", showModalHandler);
+closeModal.addEventListener("click", hideModalHandler);
+addItem.addEventListener("click", addItemHandler);
+url.addEventListener("keyup", urlEnterHandler);
 
 // document.querySelector("header > button").addEventListener("click", showHider);
 // document.getElementById("cancel-modal").addEventListener("click", showHider);
