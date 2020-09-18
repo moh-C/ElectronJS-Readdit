@@ -8,7 +8,8 @@ const {
   urlEnterHandler,
 } = require("./modalHandler");
 const { toggleAddItem } = require("./toggle");
-const { addItemFiller } = require("./itemHandler");
+
+const itemHandler = require("./itemHandler");
 
 // All of the Node.js APIs are available in this process.
 
@@ -18,7 +19,7 @@ let showModal = document.getElementById("show-modal"),
   url = document.getElementById("url");
 
 ipcRenderer.on("add-item-success", (e, item) => {
-  addItemFiller(item);
+  itemHandler.addItem(item, true);
   url.value = "";
   hideModalHandler();
   toggleAddItem();
