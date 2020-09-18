@@ -11,6 +11,20 @@ let showModal = document.getElementById("show-modal"),
   addItem = document.getElementById("add-item"),
   url = document.getElementById("url");
 
+let toggleAddItem = () => {
+  if (addItem.disabled === true) {
+    addItem.disabled = false;
+    addItem.style.opacity = 1;
+    closeModal.style.display = "inline";
+    addItem.innerText = "Add Item";
+  } else {
+    addItem.disabled = true;
+    addItem.innerText = "Adding...";
+    addItem.style.opacity = 0.5;
+    closeModal.style.display = "none";
+  }
+};
+
 let showModalHandler = (e) => {
   modal.style.transform = "translateX(0)";
   modal.style.zIndex = 1;
@@ -27,10 +41,12 @@ let hideModalHandler = (e) => {
 let addItemFiller = (e) => {
   url.value = "";
   hideModalHandler();
+  toggleAddItem();
   console.log(e);
 };
 
 let addItemHandler = (e) => {
+  toggleAddItem();
   ipcRenderer.invoke("add-item", url.value).then(addItemFiller);
 };
 

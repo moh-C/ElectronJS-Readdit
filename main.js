@@ -40,7 +40,7 @@ function createWindow() {
   mainWindow.setMenu(null);
 
   // Open DevTools - Remove for PRODUCTION!
-  mainWindow.webContents.openDevTools();
+  // mainWindow.webContents.openDevTools();
 
   winState.manage(mainWindow);
 
