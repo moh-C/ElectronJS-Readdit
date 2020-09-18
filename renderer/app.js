@@ -45,14 +45,11 @@ let addItemFiller = (e) => {
   console.log(e);
 };
 
+ipcRenderer.on("add-item-success", (e, item) => console.log(item));
+
 let addItemHandler = (e) => {
   toggleAddItem();
-  ipcRenderer
-    .invoke("add-item", {
-      url: url.value,
-      online: navigator.onLine,
-    })
-    .then(addItemFiller);
+  ipcRenderer.send("add-item", url.value);
 };
 
 let urlEnterHandler = (e) => {

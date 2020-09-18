@@ -2,37 +2,28 @@ const { BrowserWindow } = require("electron");
 
 let offscreen = null;
 
-module.exports = (url) => {
+module.exports = (url, callback) => {
   offscreen = new BrowserWindow({
     width: 400,
     height: 400,
     show: false,
     webPreferences: { offscreen: true },
   });
+  offscreen.loadURL(url);
 
-  //   offscreen.webContents.on("did-finish-load", (e) => {
-  //     dataURL = offscreen.capturePage().then((i) => {
-  //       return i.toDataURL();
-  //     });
+  offscreen.webContents.on("did-finish-load", (e) => {
+    let title = offscreen.getTitle();
+    dataURL = offscreen.capturePage().then((image) => {
+      let screenshot = image.toDataURL();
+      console.log(title);
+      callback({
+        title,
+        screenshot,
+        url,
+      });
 
-  //     response = {
-  //       title: offscreen.getTitle(),
-  //       url: dataURL,
-  //     };
-
-  //     offscreen.close();
-  //     offscreen = null;
-
-  //     return response;
-  //   });
-
-  response = {
-    title: "offscreen.getTitle()",
-    url: "dataURL",
-  };
-
-  offscreen.close();
-  offscreen = null;
-
-  return response;
+      offscreen.close();
+      offscreen = null;
+    });
+  });
 };

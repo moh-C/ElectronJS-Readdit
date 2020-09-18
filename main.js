@@ -7,19 +7,10 @@ const readItem = require("./readItem");
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
 
-let returnData = () => {
-  let data = {
-    url: "hello.com",
-    uri: "hello2.com",
-  };
-  return data;
-};
-
-ipcMain.handle("add-item", (e, item) => {
-  url = item["url"];
-  itemURL = readItem(url);
-  console.log(itemURL);
-  return itemURL;
+ipcMain.on("add-item", (e, item) => {
+  itemURL = readItem(item, (itemURL) => {
+    e.sender.send("add-item-success", itemURL);
+  });
 });
 
 // Create a new BrowserWindow when `app` is ready
