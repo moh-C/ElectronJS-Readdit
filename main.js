@@ -18,6 +18,8 @@ function createWindow() {
     height: winState.height,
     x: winState.x,
     y: winState.y,
+    maxWidth: 1000,
+    maxHeight: 1200,
     webPreferences: { nodeIntegration: true },
   });
 
