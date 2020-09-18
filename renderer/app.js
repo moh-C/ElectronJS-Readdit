@@ -9,7 +9,8 @@ let showModal = document.getElementById("show-modal"),
   closeModal = document.getElementById("close-modal"),
   modal = document.getElementById("modal"),
   addItem = document.getElementById("add-item"),
-  url = document.getElementById("url");
+  url = document.getElementById("url"),
+  items = document.getElementById("items");
 
 let toggleAddItem = () => {
   if (addItem.disabled === true) {
@@ -38,14 +39,17 @@ let hideModalHandler = (e) => {
   modal.style.opacity = 0;
 };
 
-let addItemFiller = (e) => {
+let addItemFiller = (item) => {
   url.value = "";
   hideModalHandler();
   toggleAddItem();
-  console.log(e);
+  let newItem = document.createElement("div");
+  newItem.setAttribute("class", "read-item");
+  newItem.innerHTML = `<img src="${item.screenshot}" /><h3>${item.title}</h3>`;
+  items.appendChild(newItem);
 };
 
-ipcRenderer.on("add-item-success", (e, item) => console.log(item));
+ipcRenderer.on("add-item-success", (e, item) => addItemFiller(item));
 
 let addItemHandler = (e) => {
   toggleAddItem();

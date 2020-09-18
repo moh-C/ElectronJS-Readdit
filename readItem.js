@@ -4,8 +4,8 @@ let offscreen = null;
 
 module.exports = (url, callback) => {
   offscreen = new BrowserWindow({
-    width: 400,
-    height: 400,
+    width: 600,
+    height: 600,
     show: false,
     webPreferences: { offscreen: true },
   });
@@ -15,7 +15,6 @@ module.exports = (url, callback) => {
     let title = offscreen.getTitle();
     dataURL = offscreen.capturePage().then((image) => {
       let screenshot = image.toDataURL();
-      console.log(title);
       callback({
         title,
         screenshot,
