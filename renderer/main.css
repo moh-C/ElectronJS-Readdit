@@ -116,8 +116,17 @@ main {
   align-items: center;
   margin: 10px;
   padding: 5px;
-  background-color: #aaa;
+  background-color: #ccc;
   border-radius: 5px;
+  border-left: 10px solid lightgray;
+}
+
+.read-item:hover {
+  background-color: #aaa;
+}
+
+.read-item.selected {
+  border-left-color: dodgerblue;
 }
 
 .read-item img {

@@ -8,7 +8,7 @@ const {
   urlEnterHandler,
 } = require("./modalHandler");
 const { toggleAddItem } = require("./toggle");
-
+const { searchHandler, selectorHandler } = require("./searchHandler");
 const itemHandler = require("./itemHandler");
 
 // All of the Node.js APIs are available in this process.
@@ -16,7 +16,8 @@ const itemHandler = require("./itemHandler");
 let showModal = document.getElementById("show-modal"),
   closeModal = document.getElementById("close-modal"),
   addItem = document.getElementById("add-item"),
-  url = document.getElementById("url");
+  url = document.getElementById("url"),
+  search = document.getElementById("search");
 
 ipcRenderer.on("add-item-success", (e, item) => {
   itemHandler.addItem(item, true);
@@ -34,3 +35,5 @@ showModal.addEventListener("click", showModalHandler);
 closeModal.addEventListener("click", hideModalHandler);
 addItem.addEventListener("click", addItemHandler);
 url.addEventListener("keyup", urlEnterHandler);
+search.addEventListener("keyup", searchHandler);
+document.addEventListener("keyup", selectorHandler);
