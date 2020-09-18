@@ -119,6 +119,7 @@ main {
   background-color: #ccc;
   border-radius: 5px;
   border-left: 10px solid lightgray;
+  -webkit-user-select: none;
 }
 
 .read-item:hover {

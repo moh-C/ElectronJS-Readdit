@@ -14,7 +14,7 @@ let searchHandler = (e) => {
     Array.from(document.getElementsByClassName("read-item")).forEach((item) => {
       let hasMatch = item.innerText
         .toLowerCase()
-        .includes(document.getElementById("search").value);
+        .includes(document.getElementById("search").value.toLowerCase());
       item.style.display = hasMatch ? "flex" : "none";
     });
   }
