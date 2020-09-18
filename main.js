@@ -1,6 +1,7 @@
 // Modules
 const { app, BrowserWindow, ipcMain } = require("electron");
 const windowStateKeeper = require("electron-window-state");
+const readItem = require("./readItem");
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -14,8 +15,11 @@ let returnData = () => {
   return data;
 };
 
-ipcMain.handle("add-item", (e) => {
-  return returnData();
+ipcMain.handle("add-item", (e, item) => {
+  url = item["url"];
+  itemURL = readItem(url);
+  console.log(itemURL);
+  return itemURL;
 });
 
 // Create a new BrowserWindow when `app` is ready
@@ -40,7 +44,7 @@ function createWindow() {
   mainWindow.setMenu(null);
 
   // Open DevTools - Remove for PRODUCTION!
-  // mainWindow.webContents.openDevTools();
+  mainWindow.webContents.openDevTools();
 
   winState.manage(mainWindow);
 

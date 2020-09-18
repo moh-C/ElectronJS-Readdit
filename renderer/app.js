@@ -47,7 +47,12 @@ let addItemFiller = (e) => {
 
 let addItemHandler = (e) => {
   toggleAddItem();
-  ipcRenderer.invoke("add-item", url.value).then(addItemFiller);
+  ipcRenderer
+    .invoke("add-item", {
+      url: url.value,
+      online: navigator.onLine,
+    })
+    .then(addItemFiller);
 };
 
 let urlEnterHandler = (e) => {
