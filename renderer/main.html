@@ -12,15 +12,17 @@
   <body>
     <header>
       <button>+</button>
-      <input type="text" id="search-item" />
+      <input type="text" id="search-item" placeholder="Search Items" />
     </header>
     <main>
-      <div class="no-item">No item</div>
+      <div id="no-item">No item</div>
     </main>
     <div id="new-item-parent">
-      <input type="text" id="add-new-item" />
-      <button id="add-item">Add item</button>
-      <button id="cancel-modal">Cancel</button>
+      <input type="text" id="add-new-item" placeholder="Add new item..." />
+      <div>
+        <button id="add-item">Add item</button>
+        <button id="cancel-modal">Cancel</button>
+      </div>
     </div>
 
     <script>

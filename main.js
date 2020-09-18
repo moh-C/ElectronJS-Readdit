@@ -9,8 +9,8 @@ let mainWindow;
 // Create a new BrowserWindow when `app` is ready
 function createWindow() {
   let winState = windowStateKeeper({
-    defaultWidth: 400,
-    defaultHeight: 500,
+    defaultWidth: 800,
+    defaultHeight: 1000,
   });
 
   mainWindow = new BrowserWindow({
@@ -26,7 +26,7 @@ function createWindow() {
   mainWindow.setMenu(null);
 
   // Open DevTools - Remove for PRODUCTION!
-  mainWindow.webContents.openDevTools();
+  // mainWindow.webContents.openDevTools();
 
   winState.manage(mainWindow);
 

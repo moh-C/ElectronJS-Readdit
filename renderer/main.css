@@ -1,3 +1,8 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
 html {
   background-color: #ccc;
 }
@@ -8,23 +13,99 @@ body {
   flex-grow: 1;
 }
 
-button {
-  background-color: #333;
+button,
+input {
+  background-color: dodgerblue;
   color: #ffffff;
   border-radius: 2px;
+  border: none;
   margin: 2px;
+  margin: 2px;
+  padding: 5px;
+}
+
+input {
+  color: #222;
+}
+
+header {
+  display: flex;
+  width: 100vw;
+  background-color: #aaa;
+}
+
+header button {
+  width: 30px;
+  height: 30px;
+  padding: 5px;
+  margin: 10px 5px;
+  outline: none;
+  border-color: black;
+  border-width: 1px;
+}
+
+header input {
+  width: 100%;
+  background-color: white;
+  padding: 5px;
+  margin: 10px 5px;
+  margin-left: 0px;
 }
 
 #add-new-item {
-  margin-right: 5px;
+  width: calc(100vw - 50px);
+  background-color: white;
 }
 
 #new-item-parent {
   position: absolute;
   width: 100%;
   height: 100%;
-  display: flex;
-  z-index: -5;
+  display: none;
+  flex-direction: column;
+  flex-wrap: wrap;
+  z-index: 5;
+  flex-grow: 1;
   justify-content: center;
   align-items: center;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+input::placeholder {
+  color: #999999;
+}
+
+#new-item-parent input {
+  margin-bottom: 10px;
+  color: #222;
+}
+
+#new-item-parent button {
+  min-width: 100px;
+}
+
+main {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+main > * {
+  max-height: 100px;
+}
+
+img {
+  width: 100px;
+  height: 100px;
+}
+
+#no-item {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-top: 25px;
+  font-weight: bolder;
+  font-size: 25px;
+  z-index: -1;
 }
