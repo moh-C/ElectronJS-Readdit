@@ -5,6 +5,7 @@ closeItem.setAttribute("id", "done");
 
 let css_ = `
     position: fixed;
+    z-index: 9999;
     text-align:center;
     justify-content:center;
     padding:10px 30px;
@@ -18,12 +19,10 @@ closeItem.addEventListener("mouseenter", (e) => {
   css_mod =
     css_ + `background-color: rgba(30, 144, 255, 0.8); cursor: pointer;`;
   closeItem.style.cssText = css_mod;
-  console.log("mouse enter");
 });
 
 closeItem.addEventListener("mouseleave", (e) => {
   closeItem.style.cssText = css_;
-  console.log("mouse leave");
 });
 
 closeItem.addEventListener("click", (e) => {

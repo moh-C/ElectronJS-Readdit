@@ -1,25 +1,13 @@
 const itemHandler = require("./itemHandler");
 
-let deleteHandler = () => {
-  itemHandler.getCurrentItem().node.remove();
-};
-
 let selectorHandler = (e) => {
-  // let currentItem = ;
-  console.log(itemHandler.getCurrentItem());
+  let currentItem = itemHandler.getCurrentItem().node;
   if (e.key == "ArrowUp" && currentItem.previousElementSibling) {
-    document.getElementsByClassName("selected")[0].classList.remove("selected");
-    itemHandler
-      .getCurrentItem()
-      .node.previousElementSibling.classList.add("selected");
+    currentItem.classList.remove("selected");
+    currentItem.previousElementSibling.classList.add("selected");
   } else if (e.key == "ArrowDown" && currentItem.nextElementSibling) {
-    document.getElementsByClassName("selected")[0].classList.remove("selected");
-    itemHandler
-      .getCurrentItem()
-      .node.nextElementSibling.classList.add("selected");
-  }
-  if (e.key == "Delete" && currentItem) {
-    deleteHandler();
+    currentItem.classList.remove("selected");
+    currentItem.nextElementSibling.classList.add("selected");
   }
 };
 
@@ -34,4 +22,4 @@ let searchHandler = (e) => {
   }
 };
 
-module.exports = { searchHandler, selectorHandler, deleteHandler };
+module.exports = { searchHandler, selectorHandler };

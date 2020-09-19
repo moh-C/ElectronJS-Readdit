@@ -10,12 +10,27 @@ items = document.getElementById("items");
 exports.storage = JSON.parse(localStorage.getItem("read-item")) || [];
 
 window.addEventListener("message", (e) => {
-  console.log(e.data.index);
+  if (e.data.action == "delete-reader-item") {
+    this.delete(e.data.index);
+    e.source.close();
+  }
 });
+
+exports.delete = (itemIndex) => {
+  this.getCurrentItem().node.remove();
+  this.storage.splice(itemIndex, 1);
+  this.save();
+
+  if (this.storage.length) {
+    let newSelectedItem = itemIndex == 0 ? 0 : itemIndex - 1;
+    document
+      .getElementsByClassName("read-item")
+      [newSelectedItem].classList.add("selected");
+  }
+};
 
 exports.getCurrentItem = () => {
   let currentItem = document.getElementsByClassName("selected")[0];
-  console.log(currentItem);
 
   let itemIndex = 0;
   let child = currentItem;
@@ -25,8 +40,6 @@ exports.getCurrentItem = () => {
     node: currentItem,
     item: itemIndex,
   };
-
-  console.log(itemIndex);
 
   return response;
 };
@@ -56,7 +69,6 @@ exports.open = (e) => {
   y=100,
   `
   );
-  console.log(selectedItem.item);
   readWin.eval(readerJS.replace("{index}", selectedItem.item));
 };
 
