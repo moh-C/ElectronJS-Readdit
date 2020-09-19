@@ -27,6 +27,7 @@ function createWindow() {
     y: winState.y,
     maxWidth: 1000,
     maxHeight: 1200,
+    minWidth: 700,
     webPreferences: { nodeIntegration: true },
   });
 

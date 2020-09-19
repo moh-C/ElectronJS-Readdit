@@ -8,7 +8,20 @@ exports.save = () => {
 
 exports.open = (e) => {
   let url_ = e.currentTarget.getAttribute("data-url");
-  console.log(url_);
+  let readWin = window.open(
+    url_,
+    "",
+    `
+  nodeIntegration=0, 
+  contextIsolation=1,
+  width=1000,
+  height=600,
+  maxWidth=2100,
+  maxHeight=2100,
+  x=100,
+  y=100,
+  `
+  );
 };
 
 exports.select = (e) => {
