@@ -1,11 +1,25 @@
+const itemHandler = require("./itemHandler");
+
+let deleteHandler = () => {
+  itemHandler.getCurrentItem().node.remove();
+};
+
 let selectorHandler = (e) => {
-  let currentItem = document.getElementsByClassName("selected")[0];
+  // let currentItem = ;
+  console.log(itemHandler.getCurrentItem());
   if (e.key == "ArrowUp" && currentItem.previousElementSibling) {
-    currentItem.classList.remove("selected");
-    currentItem.previousElementSibling.classList.add("selected");
+    document.getElementsByClassName("selected")[0].classList.remove("selected");
+    itemHandler
+      .getCurrentItem()
+      .node.previousElementSibling.classList.add("selected");
   } else if (e.key == "ArrowDown" && currentItem.nextElementSibling) {
-    currentItem.classList.remove("selected");
-    currentItem.nextElementSibling.classList.add("selected");
+    document.getElementsByClassName("selected")[0].classList.remove("selected");
+    itemHandler
+      .getCurrentItem()
+      .node.nextElementSibling.classList.add("selected");
+  }
+  if (e.key == "Delete" && currentItem) {
+    deleteHandler();
   }
 };
 
@@ -20,4 +34,4 @@ let searchHandler = (e) => {
   }
 };
 
-module.exports = { searchHandler, selectorHandler };
+module.exports = { searchHandler, selectorHandler, deleteHandler };
